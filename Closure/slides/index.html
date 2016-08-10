@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+<title>Closure</title>
+
+<meta name="description" content="">
+<meta name="author" content="hmhm">
+<meta name="generator" content="reveal-ck 3.3.1">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+
+<h2>Closure</h2>
+
+<p>~Swiftだと簡単！？~</p>
+
+</section>
+<section>
+<section>
+
+<p>みなさん知っての通りすでに標準で使われている</p>
+
+<p>画面遷移完了時</p>
+<pre><code>[self presentViewController:viewController animated:YES completion:^{
+
+
+}];
+</code></pre>
+<p>他の例がみつからない...ので、とりあえず...</p>
+
+</section>
+<section>
+
+<h2>Closure使用可能</h2>
+
+<ul>
+<li>関数型言語（Scala、Haskell、OCamlなど）</li>
+<li>Smalltalkに由来するオブジェクト指向言語</li>
+<li>C# 3.0</li>
+<li>C++11</li>
+<li>ECMAScript（JavaScriptを含む）</li>
+<li>Groovy</li>
+<li>Java 8</li>
+<li>Perl</li>
+<li>Python</li>
+<li>Ruby</li>
+<li>Objective-C(Block....うん...)</li>
+<li>Swift（よくできてる）</li>
+</ul>
+
+</section>
+</section>
+<section>
+
+<h2>Objective-Cなんて...</h2>
+
+<p><img src="http://blogs.c.yimg.jp/res/blog-00-0f/rip3slyme/folder/1204678/04/39095404/img_0?1399960469" alt="Ruby Guide: Open"></p>
+
+</section>
+<section>
+<section>
+
+<h2>一応、Block</h2>
+
+<p>aとbの値見て、aの方が大きかったらYESを返すだけ...</p>
+<pre><code>- (void)viewDidLoad {
+    [self closure:^BOOL(int a, int b){
+        return a &gt; b;
+    }];
+}
+
+-(void)closure:(BOOL(^)(int, int))close {
+    NSLog(@"%@", (close(4,2) == 1 ? @"YES" : @"NO");
+}
+
+// -&gt; YES
+</code></pre>
+</section>
+<section>
+
+<p>なんで、メソッドの定義と呼び出し側で順番違うのw
+<img src="http://canadaesl.com/wp-content/uploads/2015/08/canada-toronto-ryugaku-working-holiday-english-kanji-is-so-hard-to-learn-832x350.jpg" alt="Ruby Guuide: Open"></p>
+
+</section>
+</section>
+<section>
+
+<h2>Swiftを見てみよう<img class="emoji" alt=":smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png">
+</h2>
+
+<p><img src="http://www.suzuki.co.uk/cars/configurator/uploads/equipment/image_big/thumb/original/Swift_Web_Resize_CoolWhitePearlMetallic-0.png" alt="Ruby Guide: Open"></p>
+
+</section>
+<section>
+<section>
+<pre><code>override func viewDidLoad() {
+    closure({ (a: Int, b: Int) -&gt; Bool in
+        return a &gt; b
+    })
+}
+
+func closure(close:(Int, Int)-&gt;Bool) {
+    print("\(close(4, 2))")
+}
+</code></pre>
+<p>print()って簡単だなぁ....あ、ちがう‼︎</p>
+
+</section>
+<section>
+
+<p>メソッドの定義と呼び出し側の順番一緒じゃん<img class="emoji" alt=":heart:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png"></p>
+
+<p><img src="http://iiko-movie.com/index/img/img.jpg" alt="Ruby Guide: Open"></p>
+
+</section>
+<section>
+
+<p>Swiftならもうちょいいけそう‼︎</p>
+
+<p><strong><em>Trailing Closures</em></strong>ってのでカッコの外にだして...</p>
+<pre><code>closure() { (a: Int, b: Int) -&gt; Bool in
+    return a &gt; b
+}
+</code></pre>
+<p><strong>型推論</strong>で引数の型もいらないし、</p>
+
+<p>返り値の型もreturnもいらないでしょ...</p>
+<pre><code>closure() { (a, b) in
+    a &gt; b
+}
+</code></pre>
+</section>
+<section>
+
+<p><strong>ショートハンド引数名</strong>で、</p>
+
+<p>引数って（$0, $1..）に省略できるんだ...</p>
+<pre><code>closure({
+    $0 &gt; $1
+})
+</code></pre>
+<p>ん!?</p>
+
+<p><strong>オペレータ関数</strong>で、</p>
+
+<p>$0とか$1って勝手に判断してくれるらしいぞ...</p>
+<pre><code>closure(&gt;)
+</code></pre>
+</section>
+</section>
+<section>
+
+<h2>
+<img class="emoji" alt=":zap:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a1.png"> イミフメイ <img class="emoji" alt=":zap:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a1.png">
+</h2>
+
+<p>Swift兄さん、やりすぎですよ....</p>
+
+<p><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/r/room_42/20091007/20091007033139.jpg" alt="Ruby Guide: Open"></p>
+
+<p><strong><em>&lt;</em></strong>と<strong><em>&gt;</em></strong>がここまで省略できるらしいけど...</p>
+
+<p>ってことは‼︎</p>
+
+</section>
+<section>
+<section>
+
+<p><strong><em>map, filterとかは...</em></strong></p>
+
+</section>
+<section>
+
+<p>と、思ったけど</p>
+
+<p>さすがにそこまで省略できなかった...</p>
+<pre><code>let channels = [ "nhk", "日テレ", "フジ" ]
+channels.map { "#" + $0 }
+
+// -&gt; ["#nhk", "#日テレ", "#フジ"]
+</code></pre>
+</section>
+</section>
+<section>
+
+<h1>Thanks!</h1>
+
+</section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'default',
+
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+  var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>
