@@ -1,0 +1,283 @@
+<section>
+
+<h2>Reveal-ck</h2>
+
+<p>~簡単スライドこうざぁあ~</p>
+
+</section>
+<section>
+
+<p>大まかに言うと...<strong><em>slides.md</em></strong>作るだけ！</p>
+
+<p>なんて簡単な←</p>
+
+</section>
+<section>
+
+<p>必要な装備は</p>
+
+<ol>
+<li>Ruby</li>
+<li>ターミナル</li>
+<li>テキストエディター</li>
+</ol>
+
+<h2>だけ‼︎</h2>
+
+</section>
+<section>
+<section>
+
+<p>ふむふむ...</p>
+
+<p>でも、むずかしいんじゃないの？</p>
+
+<h2>そんなことはないんです！</h2>
+
+<p>手順は、たったの4ステップ<img class="emoji" alt=":smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png"></p>
+
+<p>↓</p>
+
+</section>
+<section>
+
+<ol>
+<li>$gem install reveal-ck</li>
+<li>"slides.md"ファイル作成</li>
+<li>"$reveal-ck generate"</li>
+<li>"$reveal-ck serve"</li>
+</ol>
+
+<h2>これだけで、</h2>
+
+<p>http://localhost:10000</p>
+
+<h2>にスライド完成!!</h2>
+
+<p>↓</p>
+
+</section>
+<section>
+
+<h2>"$gem install reveal-ck"</h2>
+
+<p>ターミナルで、"$gem install reveal-ck"</p>
+
+<p>reveal-ckをインストール</p>
+
+<p>↓</p>
+
+</section>
+<section>
+
+<h2>"slides.md"ファイル作成</h2>
+
+<p>好きなフォルダに"slides.md"ファイルを作成しましょ！</p>
+
+<p>作ったら、slides.mdの中身書き書き</p>
+
+<p>このスライドに大まかな機能を紹介してるので参考に</p>
+
+<p>↓</p>
+
+</section>
+<section>
+
+<h2>"$reveal-ck generate"</h2>
+
+<p>ターミナルでslides.mdの階層まで移動</p>
+
+<p>"$reveal-ck generate"で</p>
+
+<p>slidesってフォルダが自動生成</p>
+
+<p>↓</p>
+
+</section>
+<section>
+
+<h2>"$reveal-ck serve"</h2>
+
+<p>ターミナルで"$reveal-ck serve"を実行</p>
+
+<p>そこで、http://localhost:10000をひらくと...</p>
+
+<p>あら不思議！スライドができてるんです！</p>
+
+<p>↓</p>
+
+</section>
+<section>
+
+<h2>それでは、機能を大まかに</h2>
+
+<p>（書き方も載せてまーす）</p>
+
+<p>右に進みまーす</p>
+
+<p>→</p>
+
+</section>
+</section>
+<section>
+
+<p>使えるのは、</p>
+
+<ul>
+<li><h2>大文字</h2></li>
+<li><p>普通文字</p></li>
+<li><p><strong><em>斜体</em></strong></p></li>
+<li><p><strong>強調</strong></p></li>
+</ul>
+<pre><code>&lt;slides.mdでの書き方&gt;
+
+## 大文字
+普通文字
+***斜体***
+**強調**
+</code></pre>
+</section>
+<section>
+<section>
+
+<p>縦にページ移動できる</p>
+<pre><code>&lt;slides.mdでの書き方&gt;
+
+＊＊＊
+ページ
+ーーー
+次のページ
+ーーー
+次の次のページ
+＊＊＊
+
+</code></pre>
+<p>↓</p>
+
+</section>
+<section>
+
+<h2>リスト表示</h2>
+
+<ul>
+<li>あ</li>
+<li>い</li>
+<li>う</li>
+</ul>
+<pre><code>&lt;slides.mdでの書き方&gt;
+
+## リスト表示
+* あ
+* い
+* う
+</code></pre>
+<p>もういっちょう！</p>
+
+<p>↓</p>
+
+</section>
+<section>
+
+<h2>数字リスト</h2>
+
+<ol>
+<li>か</li>
+<li>き</li>
+<li>く</li>
+</ol>
+<pre><code>&lt;slides.mdでの書き方&gt;
+
+## 数字リスト
+1. か
+2. き
+3. く
+</code></pre>
+<p>次は、横です→</p>
+
+</section>
+</section>
+<section>
+
+<h2>画像もurlで表示</h2>
+
+<p><img src="http://canadaesl.com/wp-content/uploads/2015/08/canada-toronto-ryugaku-working-holiday-english-kanji-is-so-hard-to-learn-832x350.jpg" alt="Ruby Guuide: Open"></p>
+<pre><code>&lt;slides.mdでの書き方&gt;
+
+![Ruby Guuide: Open](http://xxxx画像URLxxxx)
+</code></pre>
+</section>
+<section>
+
+<h2>コードもかけちゃう</h2>
+<pre><code>- (NSString*)myName {
+    return @"hmhm"
+}
+
+// -&gt; "hmhm"
+</code></pre>
+<pre><code>&lt;slides.mdでの書き方&gt;
+
+｀｀｀
+- (NSString*)myName {
+    return @"hmhm"
+}
+
+// -&gt; "hmhm"
+｀｀｀
+
+</code></pre>
+</section>
+<section>
+
+<h2>絵文字もつけられちゃう</h2>
+
+<p><img class="emoji" alt=":smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png"><img class="emoji" alt=":heart:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png"></p>
+
+<p><img class="emoji" alt=":scream:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f631.png"><img class="emoji" alt=":joy:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f602.png"><img class="emoji" alt=":paw_prints:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f43e.png"><img class="emoji" alt=":underage:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f51e.png"></p>
+<pre><code>&lt;slides.mdでの書き方&gt;
+
+## 絵文字もつけられちゃう
+
+:smile::heart:
+
+:scream::joy::paw_prints::underage:
+</code></pre>
+</section>
+<section>
+
+<h2>設定もファイル1つで簡単</h2>
+<pre><code>config.yml
+
+title: "サイトのタイトル"
+author: "作者名"
+theme: "Black"
+</code></pre>
+<p>config.yml作るだけw</p>
+
+<p>テーマもこんなに選べる！</p>
+<pre><code>theme: "White"
+theme: "League"
+theme: "Sky"
+theme: "Beige"
+theme: "Simple"
+theme: "Serif"
+theme: "Blood"
+theme: "Night"
+theme: "Moon"
+theme: "Solarized"
+</code></pre>
+</section>
+<section>
+
+<h2>一応、フォルダ階層を！</h2>
+<pre><code>MySlide
+    - slides.md
+    - config.yml
+    - slides
+</code></pre>
+</section>
+<section>
+
+<h1>LET`s REVEAL-CK!</h1>
+
+</section>
