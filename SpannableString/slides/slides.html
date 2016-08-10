@@ -1,0 +1,103 @@
+<section>
+
+<h2>SpannableString</h2>
+
+</section>
+<section>
+<section>
+
+<p>例えば、名前が複数個あるとき...</p>
+
+<p>文字の途中にリンクつけたい時...</p>
+
+<p>1個1個TextViewつくって、ごにょごにょして...</p>
+
+<p>めんどくさいな(・ω・)</p>
+
+</section>
+<section>
+
+<p>そこで、<strong><em>SpannableString</em></strong></p>
+
+</section>
+</section>
+<section>
+
+<p>文字列を切り分けて、それぞれでClick管理ができる<img class="emoji" alt=":stuck_out_tongue_closed_eyes:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f61d.png"></p>
+
+<p>とりあえず見てこう</p>
+
+</section>
+<section>
+<section>
+
+<p>まず、複数個の文字を1つの文字に</p>
+<pre><code>String allStr = "Aさん" + ", " + "Bさん" + ", " + "Cさん"
+</code></pre>
+<p>間に、コンマも打っておこう...</p>
+
+</section>
+<section>
+
+<p>ここで登場<img class="emoji" alt=":ghost:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f47b.png"></p>
+<pre><code>SpannableString spannableStr = new SpannableString(allStr);
+</code></pre>
+</section>
+<section>
+
+<p>探したい文字を入れて</p>
+<pre><code>String searchStr = "Bさん"
+int start = 0;
+int end = 0;
+
+Pattern pattern = Pattern.compile(searchStr);
+Matcher matcher = pattern.matcher(allStr);
+while (matcher.find()) {
+    start = matcher.start();
+    end = matcher.end();
+    break;
+}
+</code></pre>
+</section>
+<section>
+
+<p>見つかったら、その文字にタッチをつけるだけ</p>
+<pre><code>ClickableSpan clickableSpan = new ClickableSpan() {
+    @Override
+    public void onClick(View textView) {
+        // 押された時の処理
+    }
+}
+spannableStr.setSpan(clickableSpan, start, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+</code></pre>
+</section>
+<section>
+
+<p>ちなみに、4つ目の引数は、文字を含む等設定できます</p>
+<pre><code>// 最初も最後も含む
+Spanned.SPAN_INCLUSIVE_INCLUSIVE
+// 最初だけ含む
+Spanned.SPAN_INCLUSIVE_EXCLUSIVE
+// 最後だけ含む
+Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+// 最初も最後も含まない
+Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+</code></pre>
+<p>この他にもあるんですが、詳細は闇の中<img class="emoji" alt=":bow:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f647.png"></p>
+
+</section>
+<section>
+
+<p>最後にTextViewにsetします</p>
+<pre><code>textView.setText(spannableStr);
+textView.setMovementMethod(LinkMovementMethod.getInstance());
+</code></pre>
+<p><img class="emoji" alt=":pushpin:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4cc.png">2行目のMovementMethodをsetしないとタッチがきかないです</p>
+
+</section>
+</section>
+<section>
+
+<p>Thanks<img class="emoji" alt=":heart:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png"></p>
+
+</section>
