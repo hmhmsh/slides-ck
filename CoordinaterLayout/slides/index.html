@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+<title>Slides</title>
+
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="generator" content="reveal-ck 3.3.1">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+
+<h2>Coordinaterlayout</h2>
+
+</section>
+<section>
+<section>
+
+<h2>Android Design Support Library</h2>
+
+<p>AndroidでMaterial Designを実装するためのさまざまなコンポーネントが入っている</p>
+
+</section>
+<section>
+
+<p>対象</p>
+<pre><code>Target -&gt; Android 5.0 or higher (API Level 21)
+Min -&gt; Android 4.0.3 (API Level 15)
+</code></pre>
+</section>
+<section>
+
+<p>サポート機能</p>
+<pre><code>・Snackbar
+・Floating Action Button
+・Floating labels for editing text
+・Navigation View
+・Tabs
+・CoordinatorLayout and etc..
+・Collapsing Toolbars
+</code></pre>
+</section>
+</section>
+<section>
+
+<h2>CoordinaterLayout</h2>
+
+<ul>
+<li>Coordinator -&gt; 調整者、まとめ役</li>
+<li>CoodinatorLayoutの子View同士に関係を持たせる
+
+<ul>
+<li>参照先のViewが移動した場合の追従</li>
+<li>標準で参照先になれる</li>
+</ul>
+</li>
+</ul>
+<pre><code>HorizontalGridView
+NestedScrollView
+RecyclerView
+SwipeRefreshLayout
+VerticalGridView
+</code></pre>
+</section>
+<section>
+<section>
+
+<h2>使い方</h2>
+
+<p>build.gradleに追加</p>
+<pre><code>dependencies {
+    compile "com.android.support:appcompat-v7:23.1.1"
+    compile "com.android.support:design:23.1.1"
+}
+</code></pre>
+</section>
+<section>
+
+<h2>階層</h2>
+<pre><code>&lt;CoordinatorLayout&gt;
+    &lt;AppBarLayout&gt;
+        &lt;CollapsingToolbarLayout&gt;
+            &lt;Toolbar /&gt;
+        &lt;/CollapsingToolbarLayout&gt;
+    &lt;/AppBarLayout&gt;
+    &lt;ScrollView /&gt;
+&lt;/CoordinatorLayout&gt;
+</code></pre>
+<p>CoordinaterLayoutでかこむだけ<img class="emoji" alt=":smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png"></p>
+
+</section>
+<section>
+
+<h2>幅と高さの設定くらい<img class="emoji" alt=":dog:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f436.png">
+</h2>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    &gt;
+
+    &lt;android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"&gt;
+</code></pre>
+</section>
+<section>
+<pre><code>&lt;android.support.design.widget.CollapsingToolbarLayout
+    android:id="@+id/toolbar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    app:contentScrim="?attr/colorPrimary"
+    app:layout_scrollFlags="scroll|enterAlwaysCollapsed"&gt;
+</code></pre>
+<p>これを変えるだけで挙動がいろいろできる！！
+↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</p>
+<pre><code>app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+</code></pre>
+</section>
+<section>
+
+<h2>enterAlwaysCollapsed</h2>
+<pre><code>&lt;android.support.design.widget.CollapsingToolbarLayout&gt;
+
+    &lt;ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/umaru"
+        android:scaleType="fitXY"
+        app:layout_collapseMode="parallax"/&gt;
+
+    &lt;android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/AppTheme.PopupOverlay"&gt;
+
+        &lt;ImageView/&gt;
+
+        &lt;ImageView/&gt;
+
+    &lt;/android.support.v7.widget.Toolbar&gt;
+
+&lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+</code></pre>
+<p>ポイント</p>
+<pre><code>app:layout_collapseMode="parallax"
+app:layout_collapseMode="pin" // 残る
+</code></pre>
+</section>
+<section>
+
+<p><img src="ExitUtilCollapsed.gif" alt="a"></p>
+
+</section>
+<section>
+
+<h2>enterAlways</h2>
+<pre><code>&lt;android.support.design.widget.CollapsingToolbarLayout
+    android:id="@+id/toolbar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    app:contentScrim="?attr/colorPrimary"
+    app:layout_scrollFlags="scroll|enterAlways"&gt;
+</code></pre>
+</section>
+<section>
+
+<p><img src="EnterAlways.gif" alt="a"></p>
+
+</section>
+<section>
+
+<h2>enterAlwaysCollapsed</h2>
+<pre><code>&lt;android.support.design.widget.CollapsingToolbarLayout
+    android:id="@+id/toolbar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    app:contentScrim="?attr/colorPrimary"
+    app:layout_scrollFlags="scroll|enterAlwaysCollapsed"&gt;
+</code></pre>
+</section>
+<section>
+
+<p><img src="EnterAlwaysCollapsed.gif" alt="a"></p>
+
+</section>
+<section>
+
+<h2>組み合わせる</h2>
+<pre><code>&lt;android.support.design.widget.CollapsingToolbarLayout
+    android:id="@+id/toolbar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    app:contentScrim="?attr/colorPrimary"
+    app:layout_scrollFlags="scroll|enterAlwaysCollapsed"&gt;
+
+        &lt;ImageView/&gt;
+
+        &lt;android.support.v7.widget.Toolbar/&gt;
+
+    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+
+    &lt;android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
+        app:layout_scrollFlags="scroll|enterAlways"/&gt;
+</code></pre>
+</section>
+<section>
+
+<p><img src="Mix.gif" alt="a"></p>
+
+</section>
+</section>
+<section>
+
+<h2>Thanks!!</h2>
+
+</section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'default',
+
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+  var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>
