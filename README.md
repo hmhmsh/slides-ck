@@ -6,4 +6,4 @@ Repository of slides used reveal-ck.
 
 access
 
-"http://${user名}.github.io/${repository名}/slides/"
+http://${user名}.github.io/${repository名}/slides/
