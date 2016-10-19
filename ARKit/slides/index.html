@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+<title>Slides</title>
+
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="generator" content="reveal-ck 3.3.1">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+
+<h2>ARKit</h2>
+
+<p>~拡張現実~</p>
+
+</section>
+<section>
+<section>
+
+<p>拡張現実（AR）がちょっと前に少し話題に...</p>
+
+<ul>
+<li>ポケモンGO</li>
+</ul>
+
+<p><img src="http://static-images.app-liv.jp/v1/1200x/r/articles/52907/43289_1469154120_0_1080_1920.jpeg" alt="Ruby Guide: Open"></p>
+
+</section>
+<section>
+
+<ul>
+<li>セカイカメラ</li>
+</ul>
+
+<p><img src="http://coziest.net/wp-content/uploads/2013/12/sc.jpg" alt="世界カメラ"></p>
+
+</section>
+<section>
+
+<ul>
+<li>AR EnergyBall</li>
+</ul>
+
+<p><img src="http://static-images.app-liv.jp/v1/600x/s/a2.mzstatic.com/jp/r30/Purple6/v4/8f/90/c9/8f90c9d0-9d36-0571-575f-780b75cef12b/screen568x568.jpeg" alt="AR"></p>
+
+</section>
+</section>
+<section>
+
+<h2>ARとは</h2>
+
+<ul>
+<li>Augmented Realityの略</li>
+<li>現実の世界・空間を拡張させて新たな世界や利用方法を生み出す</li>
+</ul>
+
+</section>
+<section>
+<section>
+
+<h2>ARの種類</h2>
+
+<ul>
+<li>画像認識のAR
+
+<ul>
+<li>画像を認識して情報を重ねる</li>
+</ul>
+</li>
+</ul>
+
+<p><img src="http://pbs.twimg.com/media/BaYAJhUCUAAOcsh.jpg" alt="艦これ"></p>
+
+</section>
+<section>
+
+<h2>ARの種類</h2>
+
+<ul>
+<li>位置認識のAR
+
+<ul>
+<li>GPSを利用した位置情報から認識する</li>
+</ul>
+</li>
+</ul>
+
+<p><img src="http://image.itmedia.co.jp/promobile/articles/1205/09/yu_lens.jpg" alt="位置情報"></p>
+
+</section>
+</section>
+<section>
+
+<h2>ライブラリ調査</h2>
+
+<ul>
+<li><a href="https://github.com/zac/iphonearkit">iPhoneARKit</a></li>
+<li>
+<a href="https://github.com/sumihiro/ARKitTweetDemo">ARKitTweetDemo</a>
+
+<ul>
+<li>iPhoneARKitの拡張</li>
+</ul>
+</li>
+<li>
+<a href="http://www.metaio.eu">Metaio</a>
+
+<ul>
+<li>もう使えないっぽい（？）</li>
+</ul>
+</li>
+<li><a href="http://artoolkit.org">ARToolKit</a></li>
+<li><a href="http://nyatla.jp/nyartoolkit/wp/">NyARToolkit</a></li>
+<li><a href="https://wikitude.grapecity.com">Wikitude</a></li>
+</ul>
+
+</section>
+<section>
+
+<p><img src="https://www.youtube.com/watch?v=uaYHU63zT54" alt="ようつべ"></p>
+
+</section>
+<section>
+<section>
+
+<p>とりあえず、 <code>Wikitude</code> を使ってみる</p>
+
+<p><img src="http://egaobiz.com/wp-content/uploads/2016/07/d36128aed83ca7fe5a0d3ea52512118e.png" alt="検証中"></p>
+
+<p><a href="https://github.com/Wikitude/wikitude-sdk-basic-projects/blob/master/iOS/AugmentedRealityApplication/ViewController.m">参考</a></p>
+
+</section>
+</section>
+<section>
+
+<h1>To Be Continue!</h1>
+
+</section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'default',
+
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+  var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>
