@@ -24,7 +24,7 @@
 
 まず、複数個の文字を1つの文字に
 
-```
+```java
 String allStr = "Aさん" + ", " + "Bさん" + ", " + "Cさん"
 ```
 
@@ -34,7 +34,7 @@ String allStr = "Aさん" + ", " + "Bさん" + ", " + "Cさん"
 
 ここで登場:ghost:
 
-```
+```java
 SpannableString spannableStr = new SpannableString(allStr);
 ```
 
@@ -42,7 +42,7 @@ SpannableString spannableStr = new SpannableString(allStr);
 
 探したい文字を入れて
 
-```
+```java
 String searchStr = "Bさん"
 int start = 0;
 int end = 0;
@@ -60,7 +60,7 @@ while (matcher.find()) {
 
 見つかったら、その文字にタッチをつけるだけ
 
-```
+```java
 ClickableSpan clickableSpan = new ClickableSpan() {
 	@Override
 	public void onClick(View textView) {
@@ -74,7 +74,7 @@ spannableStr.setSpan(clickableSpan, start, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE
 
 ちなみに、4つ目の引数は、文字を含む等設定できます
 
-```
+```java
 // 最初も最後も含む
 Spanned.SPAN_INCLUSIVE_INCLUSIVE
 // 最初だけ含む
@@ -91,7 +91,7 @@ Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
 
 最後にTextViewにsetします
 
-```
+```java
 textView.setText(spannableStr);
 textView.setMovementMethod(LinkMovementMethod.getInstance());
 ```
